@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EduCart — Learn. Grow. Succeed.</title>
+
+  <!--
+    HOW TO EDIT IMAGES / SIZES
+    - Change the logo: replace src in <img id="logo"> (lines near header).
+    - Course images: replace src on elements with class "course-img".
+    - Recommended sizes: hero background ~1600x700, course thumbnails ~800x500.
+    - To adjust thumbnail height change .course-img { height: 200px; } in the CSS below.
+  -->
+
+  <style>
+    :root{
+      --accent:#4b7bec;
+      --accent-2:#3b3b98;
+      --muted:#6b6b6b;
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --radius:12px;
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:#111;line-height:1.5}
+
+    /* NAV */
+    header{background:linear-gradient(90deg,var(--accent) 0%,var(--accent-2) 100%);color:#fff;padding:14px 24px;position:sticky;top:0;z-index:50}
+    .container{max-width:1100px;margin:0 auto;padding:0 16px}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    #logo{height:44px}
+    nav ul{display:flex;gap:12px;align-items:center;list-style:none;padding:0;margin:0}
+    nav a{color:#fff;text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:600}
+    .cta{background:#fff;color:var(--accent-2);padding:8px 14px;border-radius:10px}
+    .hamburger{display:none;background:transparent;border:0;color:#fff;font-size:20px}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center;padding:48px 0}
+    .hero-card{background:var(--card);padding:28px;border-radius:16px;box-shadow:0 8px 30px rgba(20,20,50,0.06)}
+    .kicker{display:inline-block;background:linear-gradient(90deg,#e6f0ff,#f0f6ff);color:var(--accent-2);font-weight:700;padding:6px 10px;border-radius:999px;margin-bottom:12px}
+    h1{margin:0 0 12px;font-size:34px}
+    p.lead{color:var(--muted);margin:0 0 18px}
+    .search{display:flex;gap:8px}
+    .search input{flex:1;padding:12px 14px;border-radius:10px;border:1px solid #e8e8ee}
+    .search button{padding:12px 14px;border-radius:10px;border:0;background:var(--accent);color:#fff;font-weight:700}
+
+    .stats{display:flex;gap:12px;margin-top:18px}
+    .stat{background:#f7f9ff;padding:10px 12px;border-radius:10px}
+
+    /* COURSES */
+    .section{padding:44px 0}
+    .section h2{margin:0 0 18px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);padding:0;border-radius:12px;overflow:hidden;box-shadow:0 6px 20px rgba(15,15,30,0.04)}
+    .course-img{width:100%;height:200px;object-fit:cover;display:block}
+    .card-body{padding:14px}
+    .card h3{margin:0 0 8px;font-size:18px}
+    .meta{color:var(--muted);font-size:14px;margin-bottom:12px}
+    .badge{display:inline-block;background:#eef6ff;color:var(--accent-2);padding:6px 8px;border-radius:8px;font-weight:700}
+    .price{float:right;font-weight:800}
+
+    /* ABOUT + CONTACT */
+    .about{display:flex;gap:20px;align-items:center}
+    .about img{width:100%;max-width:420px;border-radius:12px}
+    form{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 20px rgba(15,15,30,0.03)}
+    .input{display:block;width:100%;padding:10px;border-radius:8px;border:1px solid #e8e8ee;margin-bottom:10px}
+    .btn-primary{background:var(--accent);color:#fff;border:0;padding:10px 14px;border-radius:10px;font-weight:700}
+
+    /* FOOTER */
+    footer{padding:28px 0;color:#fff;background:#141414}
+    footer a{color:#ddd;text-decoration:none}
+
+    /* RESPONSIVE */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:640px){
+      nav ul{display:none}
+      .hamburger{display:inline-block}
+      .grid{grid-template-columns:1fr}
+      .hero{padding:24px 0}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div style="display:flex;align-items:center;gap:12px">
+        <!-- Replace logo.png with your logo file. Recommended height ~44px -->
+        <img id="logo" src="data:image/png;base64,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" alt="EduCart logo">
+        <div style="font-weight:700">EduCart</div>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a class="cta" href="#signup">Sign up</a></li>
+        </ul>
+        <button class="hamburger" id="hambBtn">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-card">
+        <span class="kicker">Online & Instructor Led</span>
+        <h1>Learn new skills — from coding to creativity</h1>
+        <p class="lead">Courses built with practical projects, mentorship and lifetime access. Start today and boost your career.</p>
+
+        <div class="search" role="search">
+          <input id="searchInput" placeholder="Search courses, e.g. 'Python for beginners'" />
+          <button onclick="searchCourses()">Search</button>
+        </div>
+
+        <div class="stats">
+          <div class="stat"><strong>1,200+</strong><div style="font-size:12px;color:var(--muted)">Courses</div></div>
+          <div class="stat"><strong>85,000+</strong><div style="font-size:12px;color:var(--muted)">Students</div></div>
+          <div class="stat"><strong>4.9</strong><div style="font-size:12px;color:var(--muted)">Average rating</div></div>
+        </div>
+
+      </div>
+
+      <aside>
+        <div style="background:linear-gradient(180deg,#fff,#f7fbff);padding:20px;border-radius:16px;box-shadow:0 10px 40px rgba(30,40,90,0.06)">
+          <h3 style="margin-top:0">Featured Course</h3>
+          <!-- Change the image below to change featured course visual. Recommended size 800x500 -->
+          <img src="https://dtmvamahs40ux.cloudfront.net/gl-academy/course/course-1155-imresizer.com%20(10).jpg" alt="Featured" style="width:100%;border-radius:10px;margin-bottom:12px;object-fit:cover;height:180px">
+          <p style="margin:0;color:var(--muted)">Full-Stack Web Development Bootcamp — project based, mentor supported</p>
+          <div style="margin-top:12px"><a class="btn-primary" href="#courses">View course</a></div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="courses" class="section">
+      <h2>Popular courses</h2>
+      <div class="grid" id="coursesGrid">
+        <!-- Sample course card. Replace course images in src with your images. -->
+        <article class="card">
+          <img class="course-img" src="https://incapp.in/assets/course-img/python.webp" alt="Course 1">
+          <div class="card-body">
+            <div class="badge">Beginner</div>
+            <span class="price">$29</span>
+            <h3>Python for Everybody</h3>
+            <div class="meta">40 hours • Certificate</div>
+            <p style="margin:0;color:var(--muted);font-size:14px">A practical introduction to Python, data structures and web scraping.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img class="course-img" src="https://dtmvamahs40ux.cloudfront.net/gl-academy/course/course-1155-imresizer.com%20(10).jpg" alt="Course 2">
+          <div class="card-body">
+            <div class="badge">Intermediate</div>
+            <span class="price">$49</span>
+            <h3>Full-Stack Web Development</h3>
+            <div class="meta">120 hours • Projects</div>
+            <p style="margin:0;color:var(--muted);font-size:14px">HTML, CSS, JS, Node and React — build real apps and portfolio projects.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img class="course-img" src="https://dtmvamahs40ux.cloudfront.net/gl-academy/course/course-264-Basics%20of%20Machine%20Learning%20Thumbnail.png" alt="Course 3">
+          <div class="card-body">
+            <div class="badge">Advanced</div>
+            <span class="price">$79</span>
+            <h3>Machine Learning A-Z</h3>
+            <div class="meta">80 hours • Capstone</div>
+            <p style="margin:0;color:var(--muted);font-size:14px">Supervised & unsupervised learning, model deployment and evaluation.</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2>About EduCart</h2>
+      <div class="about">
+        <!-- Replace about.jpg with an image of your choice -->
+        <img src="assets/about.jpg" alt="About EduCart">
+        <div>
+          <p style="color:var(--muted)">EduCart helps learners worldwide access industry-aligned courses with mentors and real projects. We partner with instructors and companies to keep content fresh and practical.</p>
+
+          <ul style="color:var(--muted)">
+            <li>Lifetime access to course content</li>
+            <li>Hands-on projects and certificates</li>
+            <li>Flexible learning — self-paced & live cohorts</li>
+          </ul>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact & Join</h2>
+      <div style="display:grid;grid-template-columns:1fr 380px;gap:18px;align-items:start">
+        <div>
+          <p style="color:var(--muted)">Have a question, partner with us, or want a custom enterprise plan? Send us a message and we'll reply within 48 hours.</p>
+
+          <div style="display:flex;gap:12px;margin-top:10px">
+            <div style="background:var(--card);padding:12px;border-radius:12px;box-shadow:0 6px 20px rgba(15,15,30,0.03)">
+              <strong>support@educart.example</strong><div style="font-size:13px;color:var(--muted)">Support</div>
+            </div>
+
+            <div style="background:var(--card);padding:12px;border-radius:12px;box-shadow:0 6px 20px rgba(15,15,30,0.03)">
+              <strong>+92 300 0000000</strong><div style="font-size:13px;color:var(--muted)">Call</div>
+            </div>
+          </div>
+        </div>
+
+        <form onsubmit="submitForm(event)">
+          <input class="input" id="name" placeholder="Your name" required />
+          <input class="input" id="email" type="email" placeholder="Your email" required />
+          <textarea class="input" id="message" rows="4" placeholder="How can we help?" required></textarea>
+          <button class="btn-primary" type="submit">Send message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center">
+      <div>&copy; <span id="year"></span> EduCart — All rights reserved.</div>
+      <div style="display:flex;gap:12px"><a href="#">Privacy</a><a href="#">Terms</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // Small interactivity: mobile menu toggle
+    document.getElementById('hambBtn').addEventListener('click', ()=>{
+      const nav = document.querySelector('nav ul');
+      if(nav.style.display === 'flex') nav.style.display = 'none'; else nav.style.display = 'flex';
+    });
+
+    // Simple search mock
+    function searchCourses(){
+      const q = document.getElementById('searchInput').value.trim();
+      if(!q){ alert('Please type something to search.'); return }
+      // In a real app you'd call an API. We do a simple filter on titles below.
+      const cards = document.querySelectorAll('#coursesGrid .card h3');
+      const results = [];
+      cards.forEach(h=>{ if(h.textContent.toLowerCase().includes(q.toLowerCase())) results.push(h.textContent) });
+      if(results.length) alert('Found: ' + results.join(', ')); else alert('No results found for "'+q+'"');
+    }
+
+    function submitForm(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      alert('Thanks '+name+"! We'll contact you at " + email + '. (Form is demo only)');
+      e.target.reset();
+    }
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
